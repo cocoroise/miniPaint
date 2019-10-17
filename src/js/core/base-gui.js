@@ -7,7 +7,7 @@ import config from "./../config.js"
 import GUI_tools_class from "./gui/gui-tools.js"
 import GUI_preview_class from "./gui/gui-preview.js"
 import GUI_colors_class from "./gui/gui-colors.js"
-// import GUI_layers_class from "./gui/gui-layers.js"
+import GUI_layers_class from "./gui/gui-layers.js"
 // import GUI_information_class from "./gui/gui-information.js"
 import GUI_details_class from "./gui/gui-details.js"
 import GUI_menu_class from "./gui/gui-menu.js"
@@ -54,7 +54,7 @@ class Base_gui_class {
     this.GUI_tools = new GUI_tools_class(this)
     this.GUI_preview = new GUI_preview_class(this)
     this.GUI_colors = new GUI_colors_class(this)
-    // this.GUI_layers = new GUI_layers_class(this)
+    this.GUI_layers = new GUI_layers_class(this)
     // this.GUI_information = new GUI_information_class(this)
     this.GUI_details = new GUI_details_class(this)
     this.GUI_menu = new GUI_menu_class()
@@ -106,7 +106,7 @@ class Base_gui_class {
     this.GUI_tools.render_main_tools()
     this.GUI_preview.render_main_preview()
     this.GUI_colors.render_main_colors()
-    // this.GUI_layers.render_main_layers()
+    this.GUI_layers.render_main_layers()
     // this.GUI_information.render_main_information()
     this.GUI_details.render_main_details()
     this.GUI_menu.render_main()

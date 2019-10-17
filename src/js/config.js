@@ -19,7 +19,7 @@ config.need_render = false
 config.mouse = {}
 
 //requires styles in reset.css
-config.themes = ["light","dark", "green"]
+config.themes = ["light", "dark", "green"]
 
 config.TOOLS = [
   {
@@ -121,7 +121,7 @@ config.TOOLS = [
     attributes: {
       crop: true
     }
-  },
+  }
 ]
 
 //link to active tool
