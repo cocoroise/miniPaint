@@ -1,5 +1,5 @@
 {
-  "name": "miniPaint",
+  "name": "minipaint",
   "version": "4.2.3",
   "author": "Vilius L.",
   "description": "Online graphics editing tool lets create, edit images using HTML5 technologies.",
@@ -11,9 +11,9 @@
     "effects"
   ],
   "scripts": {
-    "server": "webpack-dev-server --mode development --open",
-    "dev": "webpack --mode development",
-    "build": "webpack --mode production"
+    "dev": "webpack-dev-server --mode development --open",
+    "build:dev": "webpack --mode development",
+    "build:prod": "webpack --mode production"
   },
   "repository": {
     "type": "git",

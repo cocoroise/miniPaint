@@ -155,7 +155,8 @@ class Base_layers_class {
       //grid
       this.Base_gui.draw_grid(this.ctx)
 
-      //render selected object controls
+      // render selected object controls
+      // TODO:批改的图片不能放大缩小 所以把这个方法注释了
       this.Base_selection.draw_selection()
 
       //render preview
@@ -573,7 +574,6 @@ class Base_layers_class {
     id = parseInt(id)
     config.layer = this.get_layer(id)
     this.Base_selection.reset_selection()
-
     this.render()
     this.Base_gui.GUI_layers.render_layers()
   }
