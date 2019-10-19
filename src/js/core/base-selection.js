@@ -58,7 +58,6 @@ class Base_selection_class {
 
   set_selection(x, y, width, height) {
     var settings = this.find_settings()
-
     if (x != null) settings.data.x = x
     if (y != null) settings.data.y = y
     if (width != null) settings.data.width = width
@@ -68,7 +67,6 @@ class Base_selection_class {
 
   reset_selection() {
     var settings = this.find_settings()
-
     settings.data = {
       x: null,
       y: null,
@@ -109,6 +107,8 @@ class Base_selection_class {
   draw_selection() {
     var _this = this
     var settings = this.find_settings()
+    console.log("reset_selection", settings)
+
     var data = settings.data
 
     if (settings.data === null || settings.data.status == "draft") {

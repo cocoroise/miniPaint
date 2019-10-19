@@ -28,6 +28,7 @@ var instance = null
  * - width_original (int)
  * - height_original (int)
  * - visible (bool)
+ * - is_lock(bool)
  * - is_vector (bool)
  * - opacity (0-100)
  * - order (int)
@@ -156,7 +157,7 @@ class Base_layers_class {
       this.Base_gui.draw_grid(this.ctx)
 
       // render selected object controls
-      // TODO:批改的图片不能放大缩小 所以把这个方法注释了
+      // TODO: lock的图层不用画四个角的圈
       this.Base_selection.draw_selection()
 
       //render preview
@@ -207,7 +208,7 @@ class Base_layers_class {
   }
 
   /**
-   * export current 1ayers to given canvas
+   * 把当前的图层导出给canvas
    *
    * @param {canvas.context} ctx
    * @param {object} object
@@ -286,7 +287,7 @@ class Base_layers_class {
       var resolvable = false
       var need_autoresize = false
 
-      //default data
+      // 默认的config
       var layer = {
         id: _this.auto_increment,
         parent_id: 0,
@@ -310,7 +311,8 @@ class Base_layers_class {
         status: null,
         color: config.COLOR,
         filters: [],
-        render_function: null
+        render_function: null,
+        is_lock: false // TODO:锁定图层 不能选定 不能erase
       }
 
       //build data
@@ -324,6 +326,8 @@ class Base_layers_class {
 
       //prepare image
       if (layer.type == "image") {
+        // TODO：在这里锁定image的图层试试
+        layer.is_lock = true
         if (layer.name.toLowerCase().indexOf(".svg") == layer.name.length - 4) {
           //we have svg
           layer.is_vector = true
@@ -572,10 +576,16 @@ class Base_layers_class {
    */
   select(id) {
     id = parseInt(id)
-    config.layer = this.get_layer(id)
-    this.Base_selection.reset_selection()
-    this.render()
-    this.Base_gui.GUI_layers.render_layers()
+    const setting = this.get_layer(id)
+    if (setting.is_lock) {
+      console.log("base-laysers-->select", setting)
+    } else {
+      config.layer = this.get_layer(id)
+      console.log("base-layers-->select()", this.get_layer(id))
+      this.Base_selection.reset_selection()
+      this.render()
+      this.Base_gui.GUI_layers.render_layers()
+    }
   }
 
   /**
@@ -773,7 +783,6 @@ class Base_layers_class {
     var layers_sorted = this.get_sorted_layers()
     for (var i = layers_sorted.length - 1; i >= 0; i--) {
       var value = layers_sorted[i]
-
       if (value.visible == false || value.type == null) {
         continue
       }
