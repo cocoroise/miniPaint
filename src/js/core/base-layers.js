@@ -577,15 +577,11 @@ class Base_layers_class {
   select(id) {
     id = parseInt(id)
     const setting = this.get_layer(id)
-    if (setting.is_lock) {
-      console.log("base-laysers-->select", setting)
-    } else {
-      config.layer = this.get_layer(id)
-      console.log("base-layers-->select()", this.get_layer(id))
-      this.Base_selection.reset_selection()
-      this.render()
-      this.Base_gui.GUI_layers.render_layers()
-    }
+    config.layer = setting
+    console.log("base-layers-->select()", this.get_layer(id))
+    this.Base_selection.reset_selection()
+    this.render()
+    this.Base_gui.GUI_layers.render_layers()
   }
 
   /**

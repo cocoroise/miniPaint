@@ -121,10 +121,11 @@ class Selection_class extends Base_tools_class {
     var layer = config.layer
     if (mouse.valid == false || mouse.click_valid == false) return
 
-    if (config.layer.type != "image") {
-      alertify.error("Layer must be image, convert it to raster to apply this tool.")
-      return
-    }
+    // TODO: 暂时不知道为什么要限制这个
+    // if (config.layer.type != "image") {
+    //   alertify.error("Layer must be image, convert it to raster to apply this tool.")
+    //   return
+    // }
 
     if (
       this.selection.width != null &&

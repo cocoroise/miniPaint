@@ -29,12 +29,22 @@ class Select_tool_class extends Base_tools_class {
   dragStart(event) {
     var _this = this
     if (config.TOOL.name != _this.name) return
+    // lock的图层不能被移动
+    if (config.layer && config.layer.is_lock) {
+      // config.layer = null
+      return
+    }
     _this.mousedown(event)
   }
 
   dragMove(event) {
     var _this = this
     if (config.TOOL.name != _this.name) return
+    if (config.layer && config.layer.is_lock) {
+      // config.layer = null
+      return
+    }
+
     _this.mousemove(event)
   }
 
@@ -94,6 +104,7 @@ class Select_tool_class extends Base_tools_class {
     var mouse = this.get_mouse_info(e)
     if (mouse.valid == false || mouse.click_valid == false) return
     if (this.Base_selection.mouse_lock != null) return
+    console.log("drag start mouse down", config.layer)
 
     this.auto_select_object(e)
     this.saved = false
@@ -134,6 +145,7 @@ class Select_tool_class extends Base_tools_class {
     config.need_render = true
   }
 
+  // 自动选择某个图层
   auto_select_object(e) {
     var params = this.getParams()
     if (params.auto_select == false) return
@@ -144,14 +156,14 @@ class Select_tool_class extends Base_tools_class {
     for (var i = 0; i < layers_sorted.length; i++) {
       var value = layers_sorted[i]
       var canvas = this.Base_layers.convert_layer_to_canvas(value.id, null, false)
-
-      if (this.check_hit_region(e, canvas.getContext("2d")) == true) {
+      if (!value.is_lock && this.check_hit_region(e, canvas.getContext("2d")) == true) {
         this.Base_layers.select(value.id)
         break
       }
     }
   }
 
+  // 检查是否点击了某个图层
   check_hit_region(e, ctx) {
     var mouse = this.get_mouse_info(e)
     var data = ctx.getImageData(mouse.x, mouse.y, 1, 1).data

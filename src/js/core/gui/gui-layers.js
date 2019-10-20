@@ -62,6 +62,7 @@ class GUI_layers_class {
       } else if (target.id == "layer_name") {
         //select layer
         if (target.dataset.id == config.layer.id) return
+        console.log("gui-layers select")
         _this.Base_layers.select(target.dataset.id)
       } else if (target.id == "delete_filter") {
         //delete filter

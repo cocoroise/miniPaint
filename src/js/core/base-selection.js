@@ -9,7 +9,7 @@ var instance = null
 var settings_all = []
 
 /**
- * Selection class - draws rectangular selection on canvas, can be resized.
+ * Selection class - 在选中的canvas上画四个角，可以resize
  */
 class Base_selection_class {
   /**
@@ -107,10 +107,13 @@ class Base_selection_class {
   draw_selection() {
     var _this = this
     var settings = this.find_settings()
-    console.log("reset_selection", settings)
 
     var data = settings.data
 
+    // 禁止lock的东西画四边拖动的圆圈
+    if (settings.data.is_lock) {
+      return
+    }
     if (settings.data === null || settings.data.status == "draft") {
       return
     }
@@ -243,7 +246,10 @@ class Base_selection_class {
       //controls on rotated object disabled
       return
     }
-
+    if (settings.data.is_lock) {
+      return
+    }
+    
     var mouse = config.mouse
     var type = this.selected_object_drag_type
 
