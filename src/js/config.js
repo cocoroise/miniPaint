@@ -29,17 +29,12 @@ config.TOOLS = [
       auto_select: true
     }
   },
-  {
-    name: "selection",
-    title: "Selection",
-    attributes: {},
-    on_leave: "on_leave"
-  },
+
   {
     name: "brush",
     title: "Brush",
     attributes: {
-      size: 4,
+      size: 30,
       smart_brush: true
     }
   },
@@ -49,14 +44,7 @@ config.TOOLS = [
     on_update: "on_params_update",
     attributes: {
       antialiasing: true,
-      size: 20
-    }
-  },
-  {
-    name: "pick_color",
-    title: "Pick Color",
-    attributes: {
-      global: false
+      size: 10
     }
   },
   {
@@ -70,19 +58,10 @@ config.TOOLS = [
     }
   },
   {
-    name: "fill",
-    title: "Fill",
-    attributes: {
-      power: 5,
-      anti_aliasing: false,
-      contiguous: false
-    }
-  },
-  {
     name: "line",
     title: "Line",
     attributes: {
-      size: 1,
+      size: 10,
       type: {
         value: "Simple",
         values: ["Simple", "Arrow"]
@@ -93,9 +72,9 @@ config.TOOLS = [
     name: "rectangle",
     title: "Rectangle",
     attributes: {
-      size: 1,
+      size: 10,
       radius: 0,
-      fill: true,
+      fill: false,
       square: false
     }
   },
@@ -103,8 +82,8 @@ config.TOOLS = [
     name: "circle",
     title: "Circle",
     attributes: {
-      size: 1,
-      fill: true,
+      size: 10,
+      fill: false,
       circle: false
     }
   },

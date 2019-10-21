@@ -128,7 +128,7 @@ body .sp-preview {
   display: inline-block;
   float: left;
   height: 30px;
-  width: 110px;
+  width: 120px;
   padding: 5px 5px 5px 36px;
   margin: 5px;
   font-size: 14px;
@@ -187,7 +187,7 @@ body .sp-preview {
 }
 .attributes {
   float: left;
-  width: calc(100% - 125px);
+  /* width: calc(100% - 130px); */
   height: 30px;
   margin-top: 5px;
   padding: 3px 10px 0 10px;
@@ -217,7 +217,29 @@ body .sp-preview {
   background-color: #419147;
   background-color: var(--background-color-active);
 }
-
+.submenu_operate {
+  float: right;
+  text-align: center;
+  font-size: 16px;
+  margin-right: 100px;
+  padding: 10px;
+}
+.submenu_operate span {
+  border: 1px solid black;
+  border-color: var(--border-color);
+  background-color: var(--background-color-button);
+  margin-right: 5px;
+  padding: 3px 10px;
+  border-radius: var(--border-radius);
+}
+.submenu_operate span:hover {
+  cursor: pointer;
+  background-color: var(--background-color-active);
+}
+.submenu_operate span:active {
+  cursor: pointer;
+  background-color: var(--background-color-active);
+}
 /* ========== left sidebar ================================================== */
 
 .sidebar_left {
@@ -348,7 +370,25 @@ body .sp-preview {
   margin: 5px 5px 10px 5px;
 }
 .canvas_preview_details {
-  padding: 0 5px;
+  position: fixed;
+  bottom: 8%;
+  transform: translateX(-50%);
+  left: 43%;
+  z-index: 100;
+}
+.canvas_preview_details .details_btn {
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  padding: 1px 10px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  text-decoration: none;
+}
+.canvas_preview_details .details_btn:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 .preview canvas {
   cursor: pointer;
@@ -652,7 +692,7 @@ canvas {
 }
 @media screen and (max-height: 720px) {
   .sidebar_left {
-    width: 79px;
+    width: 40px;
     padding: 4px 2px 0px 2px;
   }
   .sidebar_left .item {
@@ -662,6 +702,6 @@ canvas {
     margin: 1px 3px 0 3px;
   }
   .main_wrapper {
-    margin-left: 85px;
+    margin-left: 50px;
   }
 }

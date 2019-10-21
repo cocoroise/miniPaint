@@ -31,7 +31,6 @@ class Select_tool_class extends Base_tools_class {
     if (config.TOOL.name != _this.name) return
     // lock的图层不能被移动
     if (config.layer && config.layer.is_lock) {
-      // config.layer = null
       return
     }
     _this.mousedown(event)
@@ -41,7 +40,6 @@ class Select_tool_class extends Base_tools_class {
     var _this = this
     if (config.TOOL.name != _this.name) return
     if (config.layer && config.layer.is_lock) {
-      // config.layer = null
       return
     }
 
@@ -145,7 +143,7 @@ class Select_tool_class extends Base_tools_class {
     config.need_render = true
   }
 
-  // 自动选择某个图层
+  // 自动选择某个图层 不选择lock图层
   auto_select_object(e) {
     var params = this.getParams()
     if (params.auto_select == false) return

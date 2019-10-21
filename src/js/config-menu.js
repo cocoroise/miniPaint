@@ -27,18 +27,6 @@ var menu_template = `
 			</ul>
 		</li>
 		<li>
-			<a class="trn" href="#">编辑</a>
-			<ul>
-				<li><a class="trn" data-target="edit/undo.undo" href="#">Undo</a></li>
-				<li><div class="mid-line"></div></li>
-				<li><a class="trn" data-target="edit/selection.delete" data-key="Del" href="#">Delete selection</a></li>
-				<li><a class="trn" data-target="layer/new.new_selection" href="#">Copy selection</a></li>
-				<li><a class="trn" data-target="edit/paste.paste" data-key="Ctrl+V" href="#">Paste</a></li>
-				<li><div class="mid-line"></div></li>
-				<li><a class="trn" data-target="edit/selection.select_all" href="#">Select all</a></li>
-			</ul>
-		</li>
-		<li>
 			<a class="trn" href="#">图像</a>
 			<ul>
 				<li><a class="trn dots" data-target="image/information.information" href="#">Information</a></li>
@@ -116,31 +104,9 @@ var menu_template = `
 				<li><a class="trn dots" data-target="tools/color_zoom.color_zoom" href="#">Color Zoom</a></li>
 				<li><a class="trn dots" data-target="tools/replace_color.replace_color" href="#">Replace Color</a></li>
 				<li><a class="trn dots" data-target="tools/restore_alpha.restore_alpha" href="#">Restore alpha</a></li>
-				<li class="more">
-					<a class="trn" href="#">External</a>
-					<ul>
-						<li><a class="trn external" target="_blank" href="https://tinypng.com/">Compress PNG and JPEG</a>
-					</ul>
-				</li>
-				<li><div class="mid-line"></div></li>
-				<li><a class="trn dots" data-target="tools/settings.settings" href="#">Settings</a></li>	
 			</ul>
 		</li>
-		<li>
-			<a class="trn" href="#">帮助</a>
-			<ul>
-				<li><a class="trn dots" data-target="help/shortcuts.shortcuts" href="#">Keyboard Shortcuts</a></li>
-				<li><a class="trn external" target="_blank" href="https://github.com/viliusle/miniPaint/issues">Report issues</a></li>
-				<li class="more">
-					<a class="trn" href="#">Language</a>
-					<ul>
-						<li><a data-target="help/translate.translate.en" href="#">English</a>
-						<li><div class="mid-line"></div></li>
-						<li><a data-target="help/translate.translate.zh" href="#">简体中文</a>
-					</ul>
-				</li>
-			</ul>
-		</li>
+		
 	</ul>
 `
 

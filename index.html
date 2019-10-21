@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="x-ua-compatible" content="IE=edge" />
     <title>批改编辑器</title>
-    <meta name="description" content="教师批改作业编辑器"" />
+    <meta name="description" content="批改作业编辑器"" />
     <meta
       name="keywords"
       content="photo, image, picture, transparent, layers, free, edit, html5, canvas, javascript, online, photoshop, gimp, effects, sharpen, blur, magic wand tool, clone tool, rotate, resize, photoshop online, online tools, tilt shift, sprites, keypoints"
@@ -16,8 +16,14 @@
   <body>
     <div class="wrapper">
       <div class="submenu">
-        <a class="logo" href="">miniPaint</a>
+        <a class="logo" href="">批改编辑器</a>
         <div class="block attributes" id="action_attributes"></div>
+        <div class="submenu_operate">
+          <span>上传</span>
+          <span>上一题</span>
+          <span>下一题</span>
+          <span id="submenu_operate-undo">还原</span>
+        </div>
         <div class="clear"></div>
       </div>
 
@@ -32,6 +38,22 @@
               Your browser does not support canvas or JavaScript is not enabled.
             </div>
           </canvas>
+        </div>
+        <!-- canvas放大缩小浮窗 -->
+        <div class="canvas_preview_details">
+          <div class="details">
+            <input title="Zoom out" class="details_btn" id="zoom_less" type="button" value="-" />
+            <input
+              title="Reset zoom level"
+              class="details_btn"
+              id="zoom_100"
+              type="button"
+              value="100%"
+            />
+            <input title="Zoom in" class="details_btn" id="zoom_more" type="button" value="+" />
+            <input class="details_btn" id="zoom_fit" type="button" value="fit" />
+            <input class="details_btn" id="preview_undo" type="button" value="撤销" />
+          </div>
         </div>
       </div>
 

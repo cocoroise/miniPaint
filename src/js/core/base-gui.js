@@ -11,6 +11,8 @@ import GUI_layers_class from "./gui/gui-layers.js"
 // import GUI_information_class from "./gui/gui-information.js"
 import GUI_details_class from "./gui/gui-details.js"
 import GUI_menu_class from "./gui/gui-menu.js"
+import Base_State from "./base-state"
+import Module_Layer_Clear from "../modules/layer/clear.js"
 import Help_translate_class from "./../modules/help/translate.js"
 import Helper_class from "./../libs/helpers.js"
 import alertify from "./../../../node_modules/alertifyjs/build/alertify.min.js"
@@ -58,6 +60,8 @@ class Base_gui_class {
     // this.GUI_information = new GUI_information_class(this)
     this.GUI_details = new GUI_details_class(this)
     this.GUI_menu = new GUI_menu_class()
+    this.Base_State = new Base_State()
+    this.Module_Layer_Clear = new Module_Layer_Clear()
     this.Help_translate = new Help_translate_class()
     this.modules = {}
   }
@@ -118,7 +122,7 @@ class Base_gui_class {
 
   set_events() {
     var _this = this
-    //menu events
+    //注册menu的事件
     var targets = document.querySelectorAll("#main_menu a")
     for (var i = 0; i < targets.length; i++) {
       if (targets[i].dataset.target == undefined) continue
@@ -147,24 +151,33 @@ class Base_gui_class {
       })
     }
 
-    //registerToggleAbility
-    // var targets = document.querySelectorAll(".toggle")
-    // for (var i = 0; i < targets.length; i++) {
-    //   if (targets[i].dataset.target == undefined) continue
-    //   targets[i].addEventListener("click", function(event) {
-    //     this.classList.toggle("toggled")
-    //     var target = document.getElementById(this.dataset.target)
-    //     target.classList.toggle("hidden")
-    //     //save
-    //     if (_this.Helper.strpos(target.classList, "hidden") === false)
-    //       _this.Helper.setCookie(this.dataset.target, 1)
-    //     else _this.Helper.setCookie(this.dataset.target, 0)
-    //   })
-    // }
+    // 注册toggle事件
+    var targets = document.querySelectorAll(".toggle")
+    for (var i = 0; i < targets.length; i++) {
+      if (targets[i].dataset.target == undefined) continue
+      targets[i].addEventListener("click", function(event) {
+        this.classList.toggle("toggled")
+        var target = document.getElementById(this.dataset.target)
+        target.classList.toggle("hidden")
+        //save
+        if (_this.Helper.strpos(target.classList, "hidden") === false)
+          _this.Helper.setCookie(this.dataset.target, 1)
+        else _this.Helper.setCookie(this.dataset.target, 0)
+      })
+    }
 
     document.getElementById("mobile_menu_button").addEventListener("click", function(event) {
       document.querySelector(".sidebar_right").classList.toggle("active")
     })
+
+    // 自己加的ui上的事件
+    document.getElementById("preview_undo").addEventListener("click", () => {
+      this.Base_State.undo()
+    })
+    document.getElementById("submenu_operate-undo").addEventListener("click", () => {
+      this.Module_Layer_Clear.clear()
+    })
+
     window.addEventListener(
       "resize",
       function(event) {

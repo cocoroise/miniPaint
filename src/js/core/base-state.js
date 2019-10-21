@@ -109,7 +109,7 @@ class Base_state_class {
   undo() {
     if (this.enabled == false || this.layers_archive[0] == undefined) {
       //not saved yet
-      alertify.error("Undo is not available.")
+      alertify.error("不可撤销.")
       return false
     }
 
